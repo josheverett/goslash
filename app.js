@@ -5,7 +5,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 
 var app = express(),
     env = app.get('env');
@@ -21,10 +20,19 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
-app.use('/', routes);
-app.use('/users', users);
+// Middleware to make the current path the title of the page, so that the
+// favicon+page title is literally the URL you are on. whoadude.gif @_@
+app.use(function (req, res, next) {
+  res.locals.title = req.path.split('/')[1] || 'goslash';
+  next();
+});
 
-// Global view vars.
+app.use('/', routes);
+
+// Routes that we don't want to allow as shortlinks for whatever reason.
+app.locals.protectedRoutes = ['go', 'goslash'];
+
+// We want to expose some package.json info to views.
 app.locals.packageJson = require('./package.json');
 
 // Catch 404 and forward to error handler.
@@ -38,6 +46,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
+    title: 'oh noes!',
     message: err.message,
     error: env === 'production' ? {} : err
   });

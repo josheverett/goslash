@@ -1,5 +1,19 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .container
+    a#add-link.anchor
+    form.add-link-form(action='/', method='post')
+      h2 Add Shortlink
+      .input-group.input-group-lg
+        span#input-addon-shortlink.input-group-addon go/
+        input.form-control(
+          type='text',
+          placeholder='shortlink',
+          aria-describedby='input-addon-shortlink'
+        )
+      p Redirects to:
+      .input-group.input-group-lg
+        input.form-control(type='text', placeholder='http://www.google.com/')
+        span.input-group-btn
+          button.btn.btn-primary(type='submit') Create
