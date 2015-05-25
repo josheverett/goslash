@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .container
+  .container.content
     a#add-link.anchor
     form.add-link-form(action='/', method='post')
       h2 Add Shortlink
@@ -17,3 +17,26 @@ block content
         input.form-control(type='text', placeholder='http://www.google.com/')
         span.input-group-btn
           button.btn.btn-primary(type='submit') Create
+
+  .container.content
+    a#current-links.anchor
+    h2 Current Shortlinks
+
+    table.table.current-links-table
+      thead
+        tr
+          th.shortlink Shortlink
+          th.redirects-to Redirects To
+          th.actions Actions
+      tbody
+        tr
+          td.shortlink WWWWWWWWWWWWWWWWWWWW
+          td.redirects-to http://www.google.com/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz.html?foo=bar
+          td.actions
+            a.btn.btn-xs.btn-default
+              span.glyphicon.glyphicon-stats
+              |  Stats
+            =' '
+            a.btn.btn-xs.btn-default
+              span.glyphicon.glyphicon-edit
+              |  Edit

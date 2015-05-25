@@ -18,3 +18,14 @@ For more production-like localhost development:
 
 2. `$ sudo PORT=80 DEBUG=goslash:* node ./bin/www`
 3. http://golocal/
+
+# TODO
+
+* Storage.
+* Make form work. Try HTML5 validation/no JS?
+* List links.
+* All redirects should be 302s with anti-caching headers.
+* Edit/delete.
+* Link stats. URL history with clicks per url.
+* Paging for current links.
+* Search.

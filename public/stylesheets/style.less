@@ -1,9 +1,15 @@
+@import "../../bower_components/bootstrap/less/variables.less";
+
 body {
-  padding-top: 50px; /* For navbar. */
+  padding-top: 70px; /* For navbar. */
 }
 
 .navbar-brand > img {
   max-height: 100%;
+}
+
+.container.content {
+  margin-bottom: 20px;
 }
 
 /* For using anchored links with the fixed navbar. */
@@ -16,4 +22,34 @@ body {
 
 .add-link-form .input-group {
   margin-bottom: 15px;
+}
+
+.current-links-table {
+  table-layout: fixed;
+}
+
+.current-links-table .shortlink,
+.current-links-table .redirects-to {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.current-links-table .shortlink {
+  width: 250px;
+}
+
+.current-links-table .actions {
+  width: 150px;
+}
+
+/* For smaller screens, hide URL and unfix shortlink width. */
+@media (max-width: @screen-sm-max) {
+  .current-links-table .shortlink {
+    width: auto;
+  }
+
+  .current-links-table .redirects-to {
+    display: none;
+  }
 }
