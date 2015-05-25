@@ -21,8 +21,8 @@ For more production-like localhost development:
 
 # TODO
 
-* All redirects should be 302s with anti-caching headers.
 * Edit/delete.
 * Link stats. URL history with clicks per url.
 * Paging for current links.
 * Search.
+* In the case of a slug 404, ask for a URL.
