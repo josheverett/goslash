@@ -11,7 +11,7 @@ function renderIndex (req, res, next) {
 function createLink (req, res, next) {
   var verb = req.body.overwrite ? 'changed' : 'added';
 
-  links.setLink(req.body);
+  links.setLink(req.body.slug, req.body.url);
   db.save();
 
   res.locals.alert = {
@@ -23,7 +23,7 @@ function createLink (req, res, next) {
 }
 
 router.use(function (req, res, next) {
-  res.locals.links = links.toArray();
+  res.locals.links = links.clone().reverse();
   next();
 });
 

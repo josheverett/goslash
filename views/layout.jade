@@ -5,7 +5,7 @@ html(lang='en')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=egde')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    title= title
+    title #{title}
     link(rel='shortcut icon', href='/images/goslash.png')
     link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
     link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap-theme.min.css')
@@ -26,8 +26,9 @@ html(lang='en')
             span.icon-bar
             span.icon-bar
             span.icon-bar
-          a.navbar-brand(href='/')
+          a.navbar-brand(href='/' + title)
             img(alt='goslash', src='/images/goslash.png')
+            |  #{title}
         #navbar.navbar-collapse.collapse
           ul.nav.navbar-nav
             li: a(href='/#current-links') Links

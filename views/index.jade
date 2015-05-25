@@ -12,7 +12,7 @@ block content
           name='slug',
           placeholder='shortlink',
           required,
-          pattern='\w+',
+          pattern='\\w+',
           aria-describedby='input-addon-shortlink'
         )
       p Redirects to:
@@ -40,7 +40,7 @@ block content
         tbody
           each link in links
             tr(data-slug=link.slug)
-              td.shortlink: a(href=link.urls[0].url) #{link.slug}
+              td.shortlink: a(href='/' + link.slug) #{link.slug}
               td.redirects-to: a(href=link.urls[0].url) #{link.urls[0].url}
               td.actions
                 a.btn.btn-xs.btn-default(href='/' + link.slug + '/stats')
