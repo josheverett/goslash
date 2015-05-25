@@ -1,7 +1,9 @@
 @import "../../bower_components/bootstrap/less/variables.less";
 
+@body-padding: 70px;
+
 body {
-  padding-top: 70px; /* For navbar. */
+  padding-top: @body-padding; /* For navbar. */
 }
 
 .navbar-brand > img {
@@ -16,7 +18,7 @@ body {
 .anchor {
   display: block;
   position: relative;
-  top: -50px;
+  top: -(@body-padding);
   height: 0;
 }
 
