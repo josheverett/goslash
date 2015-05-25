@@ -47,6 +47,11 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     title: 'oh noes!',
+    statusCode: res.statusCode,
+    alert: {
+      type: 'danger',
+      message: err.message
+    },
     error: err,
     env: env
   });

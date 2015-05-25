@@ -9,12 +9,17 @@ block content
         span#input-addon-shortlink.input-group-addon go/
         input.form-control(
           type='text',
+          name='slug',
           placeholder='shortlink',
           aria-describedby='input-addon-shortlink'
         )
       p Redirects to:
       .input-group.input-group-lg
-        input.form-control(type='text', placeholder='http://www.google.com/')
+        input.form-control(
+          type='text',
+          name='url',
+          placeholder='http://www.google.com/'
+        )
         span.input-group-btn
           button.btn.btn-primary(type='submit') Create
 
@@ -22,34 +27,25 @@ block content
     a#current-links.anchor
     h2 Current Shortlinks
 
-    table.table.current-links-table
-      thead
-        tr
-          th.shortlink Shortlink
-          th.redirects-to Redirects To
-          th.actions Actions
-      tbody
-        tr
-          td.shortlink WWWWWWWWWWWWWWWWWWWW
-          td.redirects-to http://www.google.com/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz/foo/bar/baz.html?foo=bar
-          td.actions
-            a.btn.btn-xs.btn-default
-              span.glyphicon.glyphicon-stats
-              |  Stats
-            =' '
-            a.btn.btn-xs.btn-default
-              span.glyphicon.glyphicon-edit
-              |  Edit
-
-        each link in links
-          tr(data-slug=link.slug)
-            td.shortlink: a(href=link.url) link.slug
-            td.redirects-to: a(href=link.url) link.url
-            td.actions
-              a.btn.btn-xs.btn-default(href='/' + link.slug + '/stats')
-                span.glyphicon.glyphicon-stats
-                |  Stats
-              =' '
-              a.btn.btn-xs.btn-default.edit-link
-                span.glyphicon.glyphicon-edit
-                |  Edit
+    if links.length
+      table.table.current-links-table
+        thead
+          tr
+            th.shortlink Shortlink
+            th.redirects-to Redirects To
+            th.actions Actions
+        tbody
+          each link in links
+            tr(data-slug=link.slug)
+              td.shortlink: a(href=link.urls[0].url) #{link.slug}
+              td.redirects-to: a(href=link.urls[0].url) #{link.urls[0].url}
+              td.actions
+                a.btn.btn-xs.btn-default(href='/' + link.slug + '/stats')
+                  span.glyphicon.glyphicon-stats
+                  |  Stats
+                =' '
+                a.btn.btn-xs.btn-default(href='/' + link.slug + '/edit')
+                  span.glyphicon.glyphicon-edit
+                  |  Edit
+    else
+      p No shortlinks yet!

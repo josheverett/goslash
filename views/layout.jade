@@ -34,6 +34,12 @@ html(lang='en')
             li: a(href='/#add-link') Add Link
             li: a(href=packageJson.repository.url, target='_blank') Contribute
 
+    block header
+
+    if alert
+      .container.content
+        .alert(class='alert-' + alert.type, role='alert') !{alert.message}
+
     block content
 
     script(src='/jquery/dist/jquery.min.js')
