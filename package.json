@@ -17,6 +17,7 @@
     "express": "4.12.x",
     "jade": "1.9.x",
     "less-middleware": "1.0.x",
+    "lowdb": "0.7.x",
     "morgan": "1.5.x",
     "serve-favicon": "2.2.x"
   }

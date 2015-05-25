@@ -1,5 +1,8 @@
 var express = require('express');
-var router = express.Router();
+var low = require('lowdb');
+
+var router = express.Router(),
+    db = low('db.json');
 
 function renderIndex (req, res, next) {
   res.render('index');

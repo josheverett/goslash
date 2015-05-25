@@ -1,6 +1,7 @@
+# node stuff
 node_modules
 npm-debug.log
 
+# generated files
 public/stylesheets/*.css
-
-bower_components
+db.json
