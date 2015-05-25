@@ -13,14 +13,15 @@ function renderIndex (req, res, next) {
 
 function redirect (req, res, next) {
   var link = links.getLink(req.params.slug),
-      targetUrl, parsed;
+      currentUrl, targetUrl, parsed;
 
   if (!link) {
     next();
     return;
   }
 
-  targetUrl = _.first(link.urls).url;
+  currentUrl = _.first(link.urls);
+  targetUrl = currentUrl.url;
   parsed = url.parse(targetUrl);
 
   // As this project shows, pretty much anything can be a valid URL (hence no
@@ -30,6 +31,9 @@ function redirect (req, res, next) {
   if (!parsed.protocol) {
     targetUrl = 'http://' + targetUrl;
   }
+
+  currentUrl.clicks++;
+  db.save();
 
   res.redirect(targetUrl);
 }
