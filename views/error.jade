@@ -1,6 +1,13 @@
 extends layout
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .container.content
+    if error.status
+      h1 #{error.status}
+    else
+      h1 oh noes!
+
+    .alert.alert-danger(role='alert') #{error.message}
+
+    if env !== 'production'
+      pre #{error.stack}

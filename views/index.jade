@@ -40,3 +40,16 @@ block content
             a.btn.btn-xs.btn-default
               span.glyphicon.glyphicon-edit
               |  Edit
+
+        each link in links
+          tr(data-slug=link.slug)
+            td.shortlink: a(href=link.url) link.slug
+            td.redirects-to: a(href=link.url) link.url
+            td.actions
+              a.btn.btn-xs.btn-default(href='/' + link.slug + '/stats')
+                span.glyphicon.glyphicon-stats
+                |  Stats
+              =' '
+              a.btn.btn-xs.btn-default.edit-link
+                span.glyphicon.glyphicon-edit
+                |  Edit
