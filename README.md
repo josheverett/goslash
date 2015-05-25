@@ -21,9 +21,6 @@ For more production-like localhost development:
 
 # TODO
 
-* Storage.
-* Make form work. Try HTML5 validation/no JS?
-* List links.
 * All redirects should be 302s with anti-caching headers.
 * Edit/delete.
 * Link stats. URL history with clicks per url.

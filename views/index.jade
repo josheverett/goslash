@@ -11,6 +11,8 @@ block content
           type='text',
           name='slug',
           placeholder='shortlink',
+          required,
+          pattern='\w+',
           aria-describedby='input-addon-shortlink'
         )
       p Redirects to:
@@ -18,7 +20,8 @@ block content
         input.form-control(
           type='text',
           name='url',
-          placeholder='http://www.google.com/'
+          placeholder='http://www.google.com/',
+          required
         )
         span.input-group-btn
           button.btn.btn-primary(type='submit') Create
