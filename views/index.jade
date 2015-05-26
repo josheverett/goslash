@@ -13,6 +13,8 @@ block content
           placeholder='shortlink',
           required,
           pattern='\\w+',
+          minlength='2',
+          maxlength='20',
           aria-describedby='input-addon-shortlink'
         )
       p Redirects to:
