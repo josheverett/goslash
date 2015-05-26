@@ -3,6 +3,10 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+var moment = require('moment');
+
+// Has side effects.
+require('intl');
 
 var routes = require('./routes/index');
 
@@ -32,8 +36,9 @@ app.use('/', routes);
 // Routes that we don't want to allow as shortlinks for whatever reason.
 app.locals.protectedRoutes = ['go', 'goslash'];
 
-// We want to expose some package.json info to views.
+// Random globally stuff we wanna expose to views.
 app.locals.packageJson = require('./package.json');
+app.locals.moment = moment;
 
 // Catch 404 and forward to error handler.
 app.use(function (req, res, next) {

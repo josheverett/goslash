@@ -43,7 +43,7 @@ block content
             th.actions Actions
         tbody
           each link in links
-            tr(data-slug=link.slug)
+            tr
               td.shortlink: a(href='/' + link.slug) #{link.slug}
               td.redirects-to: a(href=link.urls[0].url) #{link.urls[0].url}
               td.actions

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container.content
+    h2 Statistics for <b>#{title}</b>
+
+    table.table.link-stats-table
+      thead
+        tr
+          th.url URL
+          th.datetime Date Added
+          th.clicks Clicks
+      tbody
+        each url in urls
+          tr
+            td.url #{url.url}
+            td.datetime #{moment(url.datetime).format('YYYY-MM-DD')}
+            td.clicks #{url.clicks.toLocaleString()}

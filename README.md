@@ -21,7 +21,6 @@ For more production-like localhost development:
 
 ## TODO
 
-* Link stats. URL history with clicks per url.
 * Paging for current links.
 * Search.
 * In the case of a slug 404, ask for a URL.

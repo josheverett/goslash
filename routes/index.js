@@ -22,6 +22,17 @@ function renderEdit (req, res, next) {
   res.render('edit');
 }
 
+function renderStats (req, res, next) {
+  var link = links.getLink(req.params.slug);
+
+  if (!link) {
+    next();
+    return;
+  }
+
+  res.render('stats', { urls: link.urls });
+}
+
 function redirect (req, res, next) {
   var link = links.getLink(req.params.slug),
       url;
@@ -82,6 +93,7 @@ router.get('/', renderIndex);
 router.get('/go(slash)?', renderIndex);
 
 router.get('/:slug/edit', renderEdit);
+router.get('/:slug/stats', renderStats);
 router.get('/:slug', redirect);
 
 router.post('/', createLink);

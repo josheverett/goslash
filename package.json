@@ -15,10 +15,12 @@
     "body-parser": "1.12.x",
     "debug": "2.2.x",
     "express": "4.12.x",
+    "intl": "0.1.x",
     "jade": "1.9.x",
     "less-middleware": "1.0.x",
     "lodash": "3.9.2",
     "lowdb": "0.7.x",
+    "moment": "2.10.3",
     "morgan": "1.5.x",
     "serve-favicon": "2.2.x"
   }

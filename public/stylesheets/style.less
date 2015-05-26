@@ -27,12 +27,13 @@ body {
   margin-bottom: 15px;
 }
 
-.current-links-table {
+.table {
   table-layout: fixed;
 }
 
 .current-links-table .shortlink,
-.current-links-table .redirects-to {
+.current-links-table .redirects-to,
+.link-stats-table .url {
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -44,6 +45,11 @@ body {
 
 .current-links-table .actions {
   width: 150px;
+}
+
+.link-stats-table .datetime,
+.link-stats-table .clicks {
+  width: 100px;
 }
 
 /* For smaller screens, hide URL and unfix shortlink width. */
