@@ -1,9 +1,8 @@
 {
   "name": "goslash",
   "description": "Editable custom shortlinks.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Josh Everett <josh.r.everett@gmail.com>",
-  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/josheverett/goslash"
