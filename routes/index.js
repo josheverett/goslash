@@ -1,6 +1,5 @@
 var _ = require('lodash'),
     express = require('express'),
-    url = require('url'),
 
     db = require('../lib/db'),
 
@@ -17,29 +16,19 @@ function renderEdit (req, res, next) {
 
 function redirect (req, res, next) {
   var link = links.getLink(req.params.slug),
-      currentUrl, targetUrl, parsed;
+      url;
 
   if (!link) {
     next();
     return;
   }
 
-  currentUrl = _.first(link.urls);
-  targetUrl = currentUrl.url;
-  parsed = url.parse(targetUrl);
+  url = _.first(link.urls);
 
-  // As this project shows, pretty much anything can be a valid URL (hence no
-  // server-side validation). We need to ensure that URLs such as "foo" are not
-  // treated as local URL paths, but other servers. So if the URL lacks a
-  // protocol, we'll prepend "http://" to it.
-  if (!parsed.protocol) {
-    targetUrl = 'http://' + targetUrl;
-  }
-
-  currentUrl.clicks++;
+  url.clicks++;
   db.save();
 
-  res.redirect(targetUrl);
+  res.redirect(url.url);
 }
 
 function createLink (req, res, next) {
