@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 // Middleware to make the current path the title of the page, so that the
 // favicon+page title is literally the URL you are on. whoadude.gif @_@
 app.use(function (req, res, next) {
-  res.locals.title = req.path.split('/')[1] || 'goslash';
+  res.locals.title = req.params.slug || req.path.split('/')[1] || 'goslash';
   next();
 });
 
