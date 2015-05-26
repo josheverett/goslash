@@ -11,6 +11,10 @@ function renderIndex (req, res, next) {
   res.render('index');
 }
 
+function renderEdit (req, res, next) {
+  res.render('edit');
+}
+
 function redirect (req, res, next) {
   var link = links.getLink(req.params.slug),
       currentUrl, targetUrl, parsed;
@@ -41,7 +45,7 @@ function redirect (req, res, next) {
 function createLink (req, res, next) {
   var verb = req.body.overwrite ? 'changed' : 'added';
 
-  links.setLink(req.body.slug, req.body.url);
+  links.setLink(req.body.slug, req.body.url, req.body.overwrite);
   db.save();
 
   res.locals.alert = {
@@ -62,8 +66,10 @@ router.use(function (req, res, next) {
 router.get('/', renderIndex);
 router.get('/go(slash)?', renderIndex);
 
+router.get('/:slug/edit', renderEdit);
 router.get('/:slug', redirect);
 
 router.post('/', createLink);
+router.post('/edit', createLink);
 
 module.exports = router;

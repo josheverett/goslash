@@ -2,7 +2,7 @@
 
 Editable custom shortlinks.
 
-# Running on localhost
+## Running on localhost
 
 1. `$ DEBUG=goslash:* node ./bin/www`
 2. http://localhost:3000/
@@ -19,7 +19,7 @@ For more production-like localhost development:
 2. `$ sudo PORT=80 DEBUG=goslash:* node ./bin/www`
 3. http://golocal/
 
-# TODO
+## TODO
 
 * Edit/delete.
 * Link stats. URL history with clicks per url.

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container.content
+    form(action='/edit', method='post')
+      input(type='hidden', name='overwrite', value='true')
+      input(type='hidden', name='slug', value=title)
+      h2 Edit Shortlink
+      p Redirect <b>#{title}</b> to:
+      .input-group.input-group-lg
+        input.form-control(
+          type='text',
+          name='url',
+          placeholder='http://www.google.com/',
+          required
+        )
+        span.input-group-btn
+          button.btn.btn-primary(type='submit') Update
