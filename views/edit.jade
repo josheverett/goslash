@@ -16,3 +16,12 @@ block content
         )
         span.input-group-btn
           button.btn.btn-primary(type='submit') Update
+
+  .container: hr
+
+  .container.content
+    form(action='/delete', method='post')
+      input(type='hidden', name='slug', value=title)
+      h2 Delete Shortlink
+      p Permanently delete <b>#{title}</b>?
+      button.btn.btn-danger(type='submit') Nuke it from Orbit

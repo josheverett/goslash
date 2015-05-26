@@ -21,7 +21,6 @@ For more production-like localhost development:
 
 ## TODO
 
-* Edit/delete.
 * Link stats. URL history with clicks per url.
 * Paging for current links.
 * Search.

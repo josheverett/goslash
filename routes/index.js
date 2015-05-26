@@ -1,5 +1,6 @@
 var _ = require('lodash'),
     express = require('express'),
+    qs = require('querystring'),
 
     db = require('../lib/db'),
 
@@ -8,6 +9,13 @@ var _ = require('lodash'),
 
 function renderIndex (req, res, next) {
   res.render('index');
+}
+
+function renderIndexAlert (res, type, message) {
+  res.redirect('/?' + qs.stringify({
+    alertType: type,
+    alertMessage: message
+  }));
 }
 
 function renderEdit (req, res, next) {
@@ -37,16 +45,34 @@ function createLink (req, res, next) {
   links.setLink(req.body.slug, req.body.url, req.body.overwrite);
   db.save();
 
-  res.locals.alert = {
-    type: 'success',
-    message: 'Shortlink "' + req.body.slug + '" ' + verb + '!'
-  };
+  renderIndexAlert(res, 'success',
+    'Shortlink "' + req.body.slug + '" ' + verb + '!');
+}
 
-  renderIndex(req, res, next);
+function deleteLink (req, res, next) {
+  var link = links.getLink(req.body.slug),
+      index;
+
+  if (!link) {
+    throw new Error('This shortlink does not exist.');
+  }
+
+  links.remove({ slug: link.slug });
+
+  renderIndexAlert(res, 'success',
+    'Shortlink <b>' + link.slug + '</b> deleted!');
 }
 
 router.use(function (req, res, next) {
   res.locals.links = links.clone().reverse();
+
+  if (req.query.alertType) {
+    res.locals.alert = {
+      type: req.query.alertType,
+      message: req.query.alertMessage
+    };
+  }
+
   next();
 });
 
@@ -60,5 +86,6 @@ router.get('/:slug', redirect);
 
 router.post('/', createLink);
 router.post('/edit', createLink);
+router.post('/delete', deleteLink);
 
 module.exports = router;

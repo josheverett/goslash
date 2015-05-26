@@ -16,4 +16,16 @@ function validate (e) {
 
 $('input').on('keyup change blur invalid', validate);
 
+// Deletion warning.
+function warnOnDelete (e) {
+  var shouldDelete = confirm('Are you absolutely sure you want to ' +
+        'permanently delete this shortlink?');
+
+  if (!shouldDelete) {
+    e.preventDefault();
+  }
+}
+
+$('form[action="/delete"]').on('submit', warnOnDelete);
+
 });
