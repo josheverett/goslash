@@ -34,7 +34,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 
 // Routes that we don't want to allow as shortlinks for whatever reason.
-app.locals.protectedRoutes = ['go', 'goslash'];
+app.locals.protectedRoutes = ['go', 'goslash', 'health'];
 
 // Random globally stuff we wanna expose to views.
 app.locals.packageJson = require('./package.json');

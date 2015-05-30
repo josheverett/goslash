@@ -7,6 +7,10 @@ var _ = require('lodash'),
     router = express.Router(),
     links = db('links');
 
+function health (req, res, next) {
+  res.json({ 'wow': 'such health' });
+}
+
 function renderIndex (req, res, next) {
   res.render('index');
 }
@@ -91,6 +95,8 @@ router.use(function (req, res, next) {
 // capturing groups. So we have to do this.
 router.get('/', renderIndex);
 router.get('/go(slash)?', renderIndex);
+
+router.get('/health', health);
 
 router.get('/:slug/edit', renderEdit);
 router.get('/:slug/stats', renderStats);
